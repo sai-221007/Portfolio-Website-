@@ -1,0 +1,180 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+:root,
+[data-theme='graphite'] {
+  /* Graphite Gallery (Default Dark Theme) */
+  --color-bg: #121214;
+  --color-text: #F3F4F6;
+  --color-muted: #9CA3AF;
+  --color-accent: #D4B2A7;
+  --color-accent-hover: #C59F94;
+  --color-accent-secondary: #8B8589;
+  --color-surface: #1A1A1F;
+  --color-surface-hover: #23232A;
+  --color-card: #18181C;
+  --color-border: #2D2D35;
+  --color-border-subtle: #24242B;
+  --color-nav-bg: rgba(18, 18, 20, 0.85);
+  --color-shadow: rgba(0, 0, 0, 0.45);
+  --color-glow: rgba(212, 178, 167, 0.25);
+  --star-color-1: #E5E7EB;
+  --star-color-2: #9CA3AF;
+  --star-color-3: #D4B2A7;
+}
+
+[data-theme='sapphire'] {
+  /* Midnight Sapphire (Deep Cosmic Navy & Cyan) */
+  --color-bg: #0A0F1D;
+  --color-text: #F0F6FC;
+  --color-muted: #94A3B8;
+  --color-accent: #38BDF8;
+  --color-accent-hover: #0EA5E9;
+  --color-accent-secondary: #818CF8;
+  --color-surface: #111A2E;
+  --color-surface-hover: #18233C;
+  --color-card: #0F172A;
+  --color-border: #1E293B;
+  --color-border-subtle: #172033;
+  --color-nav-bg: rgba(10, 15, 29, 0.88);
+  --color-shadow: rgba(0, 0, 0, 0.55);
+  --color-glow: rgba(56, 189, 248, 0.25);
+  --star-color-1: #E0F2FE;
+  --star-color-2: #7DD3FC;
+  --star-color-3: #38BDF8;
+}
+
+[data-theme='emerald'] {
+  /* Obsidian Emerald (Matrix Carbon & Terminal Green) */
+  --color-bg: #0B0F0E;
+  --color-text: #F0FDF4;
+  --color-muted: #9CA3AF;
+  --color-accent: #10B981;
+  --color-accent-hover: #059669;
+  --color-accent-secondary: #34D399;
+  --color-surface: #131A18;
+  --color-surface-hover: #1A2421;
+  --color-card: #0F1614;
+  --color-border: #1E2B27;
+  --color-border-subtle: #16211E;
+  --color-nav-bg: rgba(11, 15, 14, 0.88);
+  --color-shadow: rgba(0, 0, 0, 0.55);
+  --color-glow: rgba(16, 185, 129, 0.25);
+  --star-color-1: #DCFCE7;
+  --star-color-2: #6EE7B7;
+  --star-color-3: #10B981;
+}
+
+[data-theme='amber'] {
+  /* Titanium Amber (Molten Carbon & Gold Energy) */
+  --color-bg: #141210;
+  --color-text: #FFFBEB;
+  --color-muted: #A8A29E;
+  --color-accent: #F59E0B;
+  --color-accent-hover: #D97706;
+  --color-accent-secondary: #FBBF24;
+  --color-surface: #1C1815;
+  --color-surface-hover: #26211C;
+  --color-card: #171412;
+  --color-border: #2E2620;
+  --color-border-subtle: #231D18;
+  --color-nav-bg: rgba(20, 18, 16, 0.88);
+  --color-shadow: rgba(0, 0, 0, 0.55);
+  --color-glow: rgba(245, 158, 11, 0.25);
+  --star-color-1: #FEF3C7;
+  --star-color-2: #FCD34D;
+  --star-color-3: #F59E0B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 9999px;
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-secondary);
+}
+
+/* Glassmorphism utility */
+.nav-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: var(--color-nav-bg);
+}
+
+/* Speech bubble caret */
+.speech-bubble-tail {
+  position: absolute;
+  bottom: -12px;
+  right: 28px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid var(--color-card);
+  filter: drop-shadow(0 2px 2px var(--color-shadow));
+}
+
+@media (max-width: 768px) {
+  .speech-bubble-tail {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 3D Showcase Shader Frame */
+.shader-frame {
+  position: relative;
+  width: 100%;
+  height: 680px;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background-color: #080808;
+}
+
+@media (max-width: 640px) {
+  .shader-frame {
+    height: 480px;
+    min-height: 380px;
+  }
+}
