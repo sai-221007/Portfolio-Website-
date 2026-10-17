@@ -362,26 +362,35 @@ export default function Showcase3D() {
             <div className="relative rounded-3xl bg-theme-card border border-theme-border shadow-2xl overflow-hidden flex flex-col">
               {/* Stage Top Control Bar */}
               <div className="flex flex-wrap items-center justify-between px-5 py-3.5 bg-theme-surface/90 border-b border-theme-border/80 backdrop-blur-md gap-3">
-                {/* Left: Active Indicator */}
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-theme-card border border-theme-border text-xs font-mono">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-theme-muted font-bold uppercase tracking-wider text-[11px]">
-                      OPENED:
-                    </span>
-                    <span className={`font-semibold ${currentExp.accentColor}`}>
-                      {currentExp.title}
-                    </span>
+                {/* Left: Active Experience Selector Tabs */}
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-mono text-theme-muted uppercase tracking-wider font-bold hidden sm:inline mr-1">
+                    VIEW:
                   </span>
-
-                  {/* Switch to the other experience quickly */}
-                  <button
-                    onClick={() => setActiveView(activeView === 'warp' ? 'books' : 'warp')}
-                    className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-theme-surface hover:bg-theme-surfaceHover text-[11px] font-mono text-theme-muted hover:text-theme-text border border-theme-border/60 transition-colors"
-                  >
-                    <span>Switch to {activeView === 'warp' ? '3D Field Manuals' : 'Hyperspace Warp'}</span>
-                    <ChevronRight className="w-3 h-3" />
-                  </button>
+                  <div className="inline-flex p-1 rounded-2xl bg-theme-card border border-theme-border text-xs font-mono gap-1">
+                    <button
+                      onClick={() => setActiveView('warp')}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+                        activeView === 'warp'
+                          ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-sm'
+                          : 'text-theme-muted hover:text-theme-text hover:bg-theme-surface/50 border border-transparent'
+                      }`}
+                    >
+                      <Zap className="w-3.5 h-3.5 text-cyan-400" />
+                      <span>Hyperspace Warp</span>
+                    </button>
+                    <button
+                      onClick={() => setActiveView('books')}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-semibold transition-all ${
+                        activeView === 'books'
+                          ? 'bg-amber-500/20 text-amber-300 border border-amber-400/40 shadow-sm'
+                          : 'text-theme-muted hover:text-theme-text hover:bg-theme-surface/50 border border-transparent'
+                      }`}
+                    >
+                      <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+                      <span>3D Field Manuals (MERN, JS, Claude)</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Right: Toggle Matter, Popup Specs, Close Stage */}
